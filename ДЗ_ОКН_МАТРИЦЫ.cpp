@@ -38,22 +38,26 @@ void one(int** mas, int n, int m) {
     }
     for (int i = 0; i < n1; i++) {
         for (int k = 0; k < m1; k++) {
-            if ((i<i1)&&(k<k1)) {
+            if ((i < i1) && (k < k1)) {
                 array[i][k] = mas[i][k];
             }
             if ((i >= i1) && (k < k1)) {
-                array[i][k] = mas[i+1][k];
+                array[i][k] = mas[i + 1][k];
             }
             if ((i < i1) && (k >= k1)) {
-                array[i][k] = mas[i][k+1];
+                array[i][k] = mas[i][k + 1];
             }
             if ((i >= i1) && (k >= k1)) {
-                array[i][k] = mas[i+1][k+1];
+                array[i][k] = mas[i + 1][k + 1];
             }
         }
     }
     print_array(array, n1, m1);
     cout <<"Минимальный элемент находится в: " << i1 << " " << k1<< endl;
+    for (int i = 0; i < n; i++) {
+        delete[] array[i];
+    }
+    delete[] array;
 }
 
 void two(int** mas, int n) {
@@ -78,6 +82,14 @@ void two(int** mas, int n) {
         }
     cout << "Результат умножения матриц:" << endl;
     print_array(matr, n, n);
+    for (int i = 0; i < n; i++) {
+        delete[] array[i];
+    }
+    delete[] array;
+    for (int i = 0; i < n; i++) {
+        delete[] matr[i];
+    }
+    delete[] matr;
 }
 
 void three(int** mas, int n, int m) {
@@ -93,6 +105,10 @@ void three(int** mas, int n, int m) {
     }
     cout << "Перевёрнутый массив:" << endl;
     print_array(array, n, m);
+    for (int i = 0; i < n; i++) {
+        delete[] array[i];
+    }
+    delete[] array;
 }
 
 void four(int** mas, int n) {
@@ -168,4 +184,8 @@ int main()
     three(mas, n, m);
     four(mas, min(n,m));
     five(mas, n, m);
+    for (int i = 0; i < n; i++) {
+        delete[] mas[i];
+    }
+    delete[] mas;
 }
